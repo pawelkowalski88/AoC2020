@@ -17,9 +17,7 @@ def part1(arr_time, ids):
 
 def part2(bus_ids):
     filtered_bus_ids = dict(filter(lambda x: x[1] != 'x', list(bus_ids.items())))
-    print(filtered_bus_ids)
     i = n = int(filtered_bus_ids[0])
-    key = 0
     prev_1 = prev_2 = 0
     count = 2
     while True:
@@ -30,10 +28,10 @@ def part2(bus_ids):
             print(n)
             if((prev_2 - prev_1) == (prev_1 - n)):
                 i = n - prev_1
-                print('i: ', i)
                 count += 1
             prev_2 = prev_1
             prev_1 = n
         n += i
+        
 part1(arrival_time, bus_ids)
 part2(bus_ids_dict)

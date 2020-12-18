@@ -4,7 +4,6 @@ rules, your_ticket, nearby_tickets = file.read().split('\n\n')
 file.close()
 
 nearby_tickets = [x.split(',') for x in nearby_tickets.split('\n')[1:]]
-
 rules = [tuple(r.split(':')) for r in rules.split('\n')]
 rules = {k : [tuple(x.split('-')) for x in v.split('or')] for k,v in rules}
 your_ticket = [int(x) for x in your_ticket.split(':')[1].split(',')]
@@ -18,7 +17,7 @@ def check_row(_n, _valid_tickets, _rule_set):
 def part1(_tickets, _rules):
     rule_set = list(itertools.chain(*_rules.values()))
     results = [[t for t in your_ticket if not check_rules(t, rule_set)] 
-        for your_ticket in _tickets]
+            for your_ticket in _tickets]
     print(sum([int(x) for x in list(itertools.chain(*results))]))
 
 def part2(_tickets, _rules):
